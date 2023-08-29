@@ -1,0 +1,8 @@
+Model Information:
+* title:	UFO Retro Toy
+* source:	https://sketchfab.com/3d-models/ufo-retro-toy-3d3c3b7a67f64fa5bed1763157f45be0
+* author:	Alexandre Orlans (https://sketchfab.com/alex_or)
+
+Model License:
+* license type:	SKETCHFAB Editorial (https://sketchfab.com/licenses)
+* requirements:	Use only in connection with events that are newsworthy or of public interest
