@@ -148,6 +148,10 @@ window.addEventListener('resize', function() {
 });
 
 document.addEventListener('keydown', function(event) {
+  if (event.keyCode >= 37 && event.keyCode <= 40) {
+    event.preventDefault();
+  }
+
   switch(event.keyCode){
     case 39:
       console.log("Moving Right")
