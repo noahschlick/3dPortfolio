@@ -14,10 +14,30 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+const loadingManager = new THREE.LoadingManager();
 
-const gltfLoader = new GLTFLoader()
-const rgbeLoader = new RGBELoader()
+// loadingManager.onStart = function(url, item, total) {
+//   console.log(`Started Loading ${url}`)
+// }
 
+const progressBar = document.getElementById('progress-bar')
+
+loadingManager.onProgress = function(url, loaded, total) {
+  progressBar.value = (loaded / total) * 100;
+}
+
+const progressBarContainer = document.querySelector('.progress-bar-container')
+loadingManager.onLoad = function() {
+  progressBarContainer.style.display = 'none';
+}
+
+loadingManager.onError = function(url) {
+  console.error(`Got a problem loading: ${url}`)
+}
+
+
+const rgbeLoader = new RGBELoader(loadingManager)
+const gltfLoader = new GLTFLoader(loadingManager)
 // Sets the color of the background
 //renderer.setClearColor(0xFEFEFE);
 
