@@ -10,7 +10,9 @@ export class Sphere {
         const sphereGeo = new THREE.SphereGeometry(this.size);
         const sphereMat = new THREE.MeshBasicMaterial({
             color: this.color,
-            wireframe: true
+            opacity: 0, 
+            wireframe: true,
+            transparent: true, 
         });
         const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
         this.sphereGeo = sphereGeo;
