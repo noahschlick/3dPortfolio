@@ -9,6 +9,8 @@ import { BoxPhysics } from './PhisicsObjects/BoxPhysics';
 import { SpherePhysics } from './PhisicsObjects/SpherePhysics';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
+
 
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
@@ -16,9 +18,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const loadingManager = new THREE.LoadingManager();
 
-// loadingManager.onStart = function(url, item, total) {
-//   console.log(`Started Loading ${url}`)
-// }
+
+
 
 const progressBar = document.getElementById('progress-bar')
 
@@ -38,6 +39,14 @@ loadingManager.onError = function(url) {
 
 const rgbeLoader = new RGBELoader(loadingManager)
 const gltfLoader = new GLTFLoader(loadingManager)
+
+const labelRenderer = new CSS3DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0px';
+labelRenderer.domElement.style.pointerEvents = 'none';
+labelRenderer.domElement.style.overflow = 'hidden';
+document.body.appendChild(labelRenderer.domElement);
 // Sets the color of the background
 //renderer.setClearColor(0xFEFEFE);
 
@@ -64,9 +73,27 @@ scene.add(group);
 // Sets orbit control to move the camera around
 const orbit = new OrbitControls(camera, renderer.domElement);
 
+// Create Element
+const p = document.createElement('p');
+p.textContent = 'Hello';
+// const cPointLabel = new CSS3DObject(p);
+// scene.add(cPointLabel);
+// cPointLabel.position.set(-6, 0.8, 4);
+
+const div = document.createElement('div');
+div.appendChild(p);
+
+const divContainer = new CSS3DObject(div);
+divContainer.rotateY(15.7);
+divContainer.rotateZ(0);
+divContainer.rotateX(-1.5);
+divContainer.position.set(0, 0, 0)
+
+scene.add(divContainer);
+
 // Camera positioning
 camera.position.set(group.position.x + 0, group.position.y + 20, group.position.z + -30);
-orbit.update()
+orbit.update();
 
 // GLTF Object
 rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(texture) {
@@ -95,7 +122,9 @@ const axesHelper = new THREE.AxesHelper(4);
 scene.add(axesHelper);
 
 // Add Ground Material
-const ground = new Ground(0xffffff, {x: 3000, y: 3000})
+var htmlElement = document.createElement('h1');
+htmlElement.innerHTML = 'This is some HTML content.asdfjlasdjkflsdjflsdjflskdjflskdjflskdjflskdjflskjdflskdjflskdjflskdjflskdjflskdjflskdjflsdkjflskdjflskdjflskdjflsdkjflsdkfjslkfjlsdkjflskdjflskdjflsdkfj';
+const ground = new Ground(0xffffff, {x: 3000, y: 3000}, htmlElement)
 scene.add(ground.getGroundMesh())
 
 
@@ -136,6 +165,8 @@ function animate(time) {
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion())
   camera.position.set(group.position.x + 0, group.position.y + 150, group.position.z + -250);
+  //camera.position.set(0, 150, -250);
+  labelRenderer.render(scene, camera);
 
   renderer.render(scene, camera);
 }
@@ -145,6 +176,7 @@ window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
 
 document.addEventListener('keydown', function(event) {
