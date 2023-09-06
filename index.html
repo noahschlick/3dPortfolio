@@ -7,6 +7,11 @@
     <script src="https://cdn.jsdelivr.net/gh/kripken/ammo.js@HEAD/builds/ammo.wasm.js"></script>
     <title>Vite App</title>
     <style>
+      @font-face {
+        font-family: 'BebasNeue'; /* Choose a unique name for your font */
+        src: url('./Fonts/BebasNeue-Regular.ttf') format('truetype'); /* Specify the path to your TTF font file */
+      }
+
       body {
         width: 100%;
         height: 100%;
@@ -20,12 +25,10 @@
         overflow: hidden;
       }
 
-      
-
       p {
-   
         color: #FFFFFF;
         z-index: -1;
+        font-family: 'BebasNeue', sans-serif;
       }
       .progress-bar-container {
         position: absolute;
@@ -39,6 +42,21 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+
+      .highlighted {
+         border: 2px solid #FF0000; /* Red border color */
+      }
+
+      .portal {
+        
+        border: 1px solid #FFFF;
+        padding-left: 20px;   /* Padding on the left */
+        padding-right: 20px;  /* Padding on the right */
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    
       }
 
       .items {
@@ -81,10 +99,6 @@
       <script type="module" src="/main.js"> </script> 
     </div>
 
-   
-    <div class="overlay">
-      <p>This is HTML content overlaid on the scene.</p>
-    </div>
   </body>
   
 </html>
