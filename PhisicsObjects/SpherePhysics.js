@@ -1,7 +1,7 @@
 import * as CANNON from 'cannon-es';
 
 export class SpherePhysics {
-    constructor(vecShape, vecPos){
+    constructor({vecShape: vecShape, vecPos: vecPos}){
         this.vecShape = vecShape;
         this.vecPos = vecPos;
         const spherePhysMat = new CANNON.Material();
