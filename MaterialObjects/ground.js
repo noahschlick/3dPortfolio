@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export class Ground {
-    constructor(color, size, html) {
+    constructor({color: color, size: size}) {
         this.color = color;
         this.size = size;
-        const groundGeo = new THREE.PlaneGeometry(100, 100);
+        const groundGeo = new THREE.PlaneGeometry(size.x, size.y);
         const groundMat = new THREE.MeshBasicMaterial({
             color: this.color,
             side: THREE.DoubleSide,
@@ -14,7 +14,6 @@ export class Ground {
         
         const groundMesh = new THREE.Mesh(groundGeo, groundMat);
         this.groundMesh = groundMesh
-        this.groundMesh.htmlElement = html;
     }
 
     getGroundMesh() {

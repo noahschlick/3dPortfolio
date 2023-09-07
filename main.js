@@ -33,7 +33,6 @@ loadingManager.onError = function(url) {
   console.error(`Got a problem loading: ${url}`)
 }
 
-
 const rgbeLoader = new RGBELoader(loadingManager)
 const gltfLoader = new GLTFLoader(loadingManager)
 
@@ -55,19 +54,14 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-
-
-let ufo;
-
+// Sets orbit control to move the camera around
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
-
-const group = new THREE.Group();
-
-// Sets orbit control to move the camera around
 const orbit = new OrbitControls(camera, renderer.domElement);
 
+
+let group = new THREE.Group();
 const divContainer = new Portal({
   text: "hello world", 
   x: 0,
@@ -84,41 +78,26 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture;
 
-  gltfLoader.load('./UFO/scene.gltf', function(gltf) {
-    const model = gltf.scene;
-    //scene.add(model)
-    ufo = model;
-    // Add Sphere Material
-    const sphere = new Sphere(0xff0000, 15)
-    //scene.add(sphere.getMesh())
-
-    group.add(ufo, sphere.getMesh())
-    
+  ufoModel = new UFO({
+    gltfLoader: gltfLoader
   });
-  // ufoModel = new UFO({
-  //   gltfLoader: gltfLoader
-  // });
-  
+
+  group = ufoModel.getGLTF();
+  scene.add(group);
 })
-
-
-scene.add(group)
 
 // Camera positioning
 camera.position.set(group.position.x + 0, group.position.y + 20, group.position.z + -30);
 orbit.update();
 
-// Sets a 12 by 12 gird helper
-const gridHelper = new THREE.GridHelper(12, 12);
-scene.add(gridHelper);
-
-// Sets the x, y, and z axes with each having a length of 4
-const axesHelper = new THREE.AxesHelper(4);
-scene.add(axesHelper);
 
 // Add Ground Material
-const ground = new Ground(0xffffff, {x: 3000, y: 3000})
+const ground = new Ground({
+  color: 0xffffff, 
+  size: {x: 3000, y: 3000}
+})
 scene.add(ground.getGroundMesh())
+
 
 
 // Create Gravity
@@ -127,13 +106,20 @@ const world = new CANNON.World({
 });
 
 // Ground Physics
-const groundPhys = new GroundPhysics({x: 1500, y: 1500, z: 0.1})
+const groundPhys = new GroundPhysics({
+  x: 1500, 
+  y: 1500, 
+  z: 0.1
+})
 world.addBody(groundPhys.getBody())
 groundPhys.setQuaternionFromEuler(-Math.PI / 2, 0, 0)
 
 
 // Add sphere physics body
-const spherePhys = new SpherePhysics(20, {x: 0, y: 50, z: 0});
+const spherePhys = new SpherePhysics({
+  vecShape: 20, 
+  vecPos: {x: 0, y: 50, z: 0}
+});
 world.addBody(spherePhys.getBody());
 spherePhys.setLinearDamping(0.31);
 
@@ -151,8 +137,8 @@ const timeStep = 1 / 60;
 // Start the animation loop
 function animate(time) {
   world.step(timeStep)
-  if (ufo)
-    ufo.rotation.y = time / 3000;
+  if (group)
+    group.rotation.y = time / 3000;
   renderer.render(scene, camera);
 
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
