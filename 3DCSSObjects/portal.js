@@ -26,4 +26,42 @@ export class Portal {
     changePosition({x: x, y: y, z: z}) {
         this.position = {x: x, y: y, z: z};
     }
+
+    getWidth() {
+        return this.divContainer.element.offsetWidth;
+    }
+
+    getHeight() {
+        return this.divContainer.element.offsetHeight;
+    }
+
+    getTLpoint() {
+        return {
+            x: this.position.x - this.divContainer.element.offsetWidth/2,
+            y: this.position.y + this.divContainer.element.offsetHeight/2, 
+        }
+    }
+
+    getTRpoint() {
+        return {
+            x: this.position.x + this.divContainer.element.offsetWidth/2,
+            y: this.position.y + this.divContainer.element.offsetHeight/2, 
+        }
+    }
+
+    getBLpoint() {
+        return {
+            x: this.position.x - this.divContainer.element.offsetWidth/2,
+            y: this.position.y - this.divContainer.element.offsetHeight/2, 
+        }
+    }
+
+    getBRpoint() {
+        return {
+            x: this.position.x + this.divContainer.element.offsetWidth/2,
+            y: this.position.y - this.divContainer.element.offsetHeight/2, 
+        }
+    }
+
+    
 }

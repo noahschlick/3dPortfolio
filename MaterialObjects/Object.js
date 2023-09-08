@@ -8,6 +8,7 @@ import { UFO } from './ufo';
 import { Ground } from './ground';
 
 export class ufoScene {
+
     constructor() {
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
@@ -57,7 +58,7 @@ export class ufoScene {
         this.gltfLoader = new GLTFLoader(this.loadingManager)
 
         this.ufo = new THREE.Group();
-     
+        this.renderGLTFObjects();
     }
 
     render3DCSSLayer() {
