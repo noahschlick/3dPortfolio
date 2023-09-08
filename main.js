@@ -13,10 +13,38 @@ import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer
 import { Portal } from './3DCSSObjects/portal';
 import { UFO } from './MaterialObjects/ufo';
 
+const scene = new THREE.Scene();
 
+const camera = new THREE.PerspectiveCamera(
+  45,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+
+// Set Renderer for 3D models
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
+// Sets orbit control to move the camera around
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1;
+
+// Sets orbit control to move the camera around
+const orbit = new OrbitControls(camera, renderer.domElement);
+
+// Set Renderer for CSS models
+const labelRenderer = new CSS3DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0px';
+labelRenderer.domElement.style.pointerEvents = 'none';
+labelRenderer.domElement.style.overflow = 'hidden';
+document.body.appendChild(labelRenderer.domElement);
+
+// Set Loading Manager
 const loadingManager = new THREE.LoadingManager();
 const progressBar = document.getElementById('progress-bar')
 
@@ -25,6 +53,7 @@ loadingManager.onProgress = function(url, loaded, total) {
 }
 
 const progressBarContainer = document.querySelector('.progress-bar-container')
+
 loadingManager.onLoad = function() {
   progressBarContainer.style.display = 'none';
 }
@@ -36,32 +65,9 @@ loadingManager.onError = function(url) {
 const rgbeLoader = new RGBELoader(loadingManager)
 const gltfLoader = new GLTFLoader(loadingManager)
 
-const labelRenderer = new CSS3DRenderer();
-labelRenderer.setSize(window.innerWidth, window.innerHeight);
-labelRenderer.domElement.style.position = 'absolute';
-labelRenderer.domElement.style.top = '0px';
-labelRenderer.domElement.style.pointerEvents = 'none';
-labelRenderer.domElement.style.overflow = 'hidden';
-document.body.appendChild(labelRenderer.domElement);
-// Sets the color of the background
-//renderer.setClearColor(0xFEFEFE);
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  45,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+let group = new THREE.Group(); // Group for the UFO
 
-// Sets orbit control to move the camera around
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1;
-const orbit = new OrbitControls(camera, renderer.domElement);
-
-
-let group = new THREE.Group();
 const divContainer = new Portal({
   text: "hello world", 
   x: 0,
@@ -97,7 +103,6 @@ const ground = new Ground({
   size: {x: 3000, y: 3000}
 })
 scene.add(ground.getGroundMesh())
-
 
 
 // Create Gravity
@@ -160,6 +165,22 @@ window.addEventListener('resize', function() {
 });
 
 document.addEventListener('keydown', function(event) {
+  moveSaucer(event);
+  detectLocation(event);
+})
+
+function detectLocation(event) {
+  console.log("PositionX: ", group.position.x);
+  console.log("PositionY: ", group.position.y);
+  console.log("Div Container: ", divContainer.position.x);
+  console.log("Div Container: ", divContainer.position.y);
+  console.log("DC Width: ", divContainer.getWidth());
+  console.log("DC Height: ", divContainer.getHeight());
+
+  
+}
+
+function moveSaucer(event){
   if (event.keyCode >= 37 && event.keyCode <= 40) {
     event.preventDefault();
   }
@@ -182,7 +203,7 @@ document.addEventListener('keydown', function(event) {
       moveBackward(spherePhys.getBody())
       break;
   }
-})
+}
 
 function moveRight(body) {
   const impulseForce = new CANNON.Vec3(-20, 0, 0); // Change the force values as needed
@@ -203,3 +224,5 @@ function moveBackward(body) {
   const impulseForce = new CANNON.Vec3(0, 0, -20); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
+
+
