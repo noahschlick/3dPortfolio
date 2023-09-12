@@ -12,14 +12,15 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 import { Portal } from './3DCSSObjects/portal';
 import { UFO } from './MaterialObjects/ufo';
-import { FarmGround } from './MaterialObjects/farmGround';
+import { FarmMaterial } from './MaterialObjects/farmMaterial';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+import { FarmLand } from './MaterialObjects/farmLand';
 
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
-  45,
+  2,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -77,14 +78,14 @@ const farmLoader = new GLTFLoader(loadingManager)
 let group = new THREE.Group(); // Group for the UFO
 let farm = new THREE.Group();
 
-const divContainer = new Portal({
-  text: "hello world", 
-  x: 0,
-  y: 0,
-  z: 0
-})
+// const divContainer = new Portal({
+//   text: "hello world", 
+//   x: 0,
+//   y: 0,
+//   z: 0
+// })
 
-scene.add(divContainer.getElement());
+// scene.add(divContainer.getElement());
 
 var keyLight = new THREE.AmbientLight(0xfffff, 1.0);
 keyLight.position.set(-100, 0, 100);
@@ -97,23 +98,59 @@ backLight.position.set(100, 0, -100).normalize();
 
 scene.add(keyLight);
 scene.add(fillLight)
+scene.add(backLight)
 
 var mtlLoader = new MTLLoader();
 
-  mtlLoader.load('./Landscape/Obj/Crops/White_Flower_Grass.mtl', function(materials) {
-    materials.preload();
-    const objLoader = new OBJLoader().setMaterials(materials)
-  
-    objLoader.load("./Landscape/Obj/Crops/White_Flower_Grass.obj", obj => {
-      var texture = new THREE.TextureLoader().load("./Landscape/Obj/Crops/White_Flower_Grass.png");
-      obj.traverse(function (child) {
-        if (child instanceof THREE.Mesh) {
-          child.material.map = texture;
-        }
-      })
-      scene.add(obj)
-    });
+const highlightMesh = new THREE.Mesh(
+  new THREE.PlaneGeometry(1, 1),
+  new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide,
+    visible: true
   })
+);
+highlightMesh.rotateX(-Math.PI / 2);
+highlightMesh.position.set(1.5, 0, 1.5);
+scene.add(highlightMesh);
+
+const fm = new FarmMaterial({
+  obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+  mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+  png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+  scene: scene,
+  position: {x: 0.5, y: 0, z: 0.5},
+  rotation: 0,
+})
+
+const fmm = new FarmMaterial({
+  obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+  mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+  png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+  scene: scene,
+  position: {x: 1.5, y: 0, z: 1.5},
+  rotation: 0,
+})
+
+const grid = new THREE.GridHelper(20, 20);
+
+scene.add(grid)
+
+// mtlLoader.load('./Landscape/Obj/Crops/White_Flower_Grass.mtl', function(materials) {
+//     materials.preload();
+//     const objLoader = new OBJLoader().setMaterials(materials)
+  
+//     objLoader.load("./Landscape/Obj/Crops/White_Flower_Grass.obj", obj => {
+//       var texture = new THREE.TextureLoader().load("./Landscape/Obj/Crops/White_Flower_Grass.png");
+//       obj.traverse(function (child) {
+//         if (child instanceof THREE.Mesh) {
+//           child.material.map = texture;
+//         }
+//       })
+//       scene.add(obj)
+//     });
+//   })
+
+//scene.add(farmLand.getObject())
 
 
 let ufoModel;
@@ -129,7 +166,47 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
   });
 
 
-  
+  var farmL = new FarmLand({
+    scene: scene
+  })
+
+
+
+  // var farmLand = new FarmMaterial({
+  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+  //   scene: scene,
+  //   position: {
+  //     x: 20,
+  //     y: 0,
+  //     z: 0
+  //   }
+  // })
+  // var farmLand = new FarmMaterial({
+  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+  //   scene: scene,
+  //   position: {
+  //     x: 0,
+  //     y: 0,
+  //     z: 20
+  //   }
+  // })
+
+  // var farmLand = new FarmMaterial({
+  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+  //   scene: scene,
+  //   position: {
+  //     x: -20,
+  //     y: 0,
+  //     z: 0
+  //   }
+  // })
+
 
   
   // farmModel = new FarmGround({
