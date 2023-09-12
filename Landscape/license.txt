@@ -1,0 +1,8 @@
+Model Information:
+* title:	Voxel Farm
+* source:	https://sketchfab.com/3d-models/voxel-farm-6a34ed6924d1453bb9a9ef97673c4c3a
+* author:	SHUBBAK3D (https://sketchfab.com/SHUBBAK3D)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

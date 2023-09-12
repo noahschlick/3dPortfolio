@@ -12,6 +12,9 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
 import { Portal } from './3DCSSObjects/portal';
 import { UFO } from './MaterialObjects/ufo';
+import { FarmGround } from './MaterialObjects/farmGround';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 
 const scene = new THREE.Scene();
 
@@ -48,6 +51,10 @@ document.body.appendChild(labelRenderer.domElement);
 const loadingManager = new THREE.LoadingManager();
 const progressBar = document.getElementById('progress-bar')
 
+// Prompt for game
+const promptToView = document.getElementById('enter-prompt')
+promptToView.textContent = ""
+
 loadingManager.onProgress = function(url, loaded, total) {
   progressBar.value = (loaded / total) * 100;
 }
@@ -64,9 +71,11 @@ loadingManager.onError = function(url) {
 
 const rgbeLoader = new RGBELoader(loadingManager)
 const gltfLoader = new GLTFLoader(loadingManager)
+const farmLoader = new GLTFLoader(loadingManager)
 
 
 let group = new THREE.Group(); // Group for the UFO
+let farm = new THREE.Group();
 
 const divContainer = new Portal({
   text: "hello world", 
@@ -77,7 +86,38 @@ const divContainer = new Portal({
 
 scene.add(divContainer.getElement());
 
+var keyLight = new THREE.AmbientLight(0xfffff, 1.0);
+keyLight.position.set(-100, 0, 100);
+
+var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%'), 0.75)
+fillLight.position.set(100, 0, 100);
+
+var backLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%'), 0.25);
+backLight.position.set(100, 0, -100).normalize();
+
+scene.add(keyLight);
+scene.add(fillLight)
+
+var mtlLoader = new MTLLoader();
+
+  mtlLoader.load('./Landscape/Obj/Crops/White_Flower_Grass.mtl', function(materials) {
+    materials.preload();
+    const objLoader = new OBJLoader().setMaterials(materials)
+  
+    objLoader.load("./Landscape/Obj/Crops/White_Flower_Grass.obj", obj => {
+      var texture = new THREE.TextureLoader().load("./Landscape/Obj/Crops/White_Flower_Grass.png");
+      obj.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+          child.material.map = texture;
+        }
+      })
+      scene.add(obj)
+    });
+  })
+
+
 let ufoModel;
+let farmModel;
 
 // GLTF Object
 rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(texture) {
@@ -87,6 +127,17 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
   ufoModel = new UFO({
     gltfLoader: gltfLoader
   });
+
+
+  
+
+  
+  // farmModel = new FarmGround({
+  //   gltfLoader: farmLoader
+  // });
+
+  // farm.add(farmModel.getGLTF())
+  // scene.add(farm)
 
   group = ufoModel.getGLTF();
   scene.add(group);
@@ -170,13 +221,23 @@ document.addEventListener('keydown', function(event) {
 })
 
 function detectLocation(event) {
-  console.log("PositionX: ", group.position.x);
-  console.log("PositionY: ", group.position.y);
-  console.log("Div Container: ", divContainer.position.x);
-  console.log("Div Container: ", divContainer.position.y);
-  console.log("DC Width: ", divContainer.getWidth());
-  console.log("DC Height: ", divContainer.getHeight());
+  if (divContainer.inContainer({
+    x: group.position.x, 
+    z: group.position.z
+  })){
+    divContainer.hightlight();
+    promptToView.textContent = "Click enter to go to link"
 
+    if (event.keyCode === 13) {
+      window.open(divContainer.link, '_blank')
+    }
+
+  } else {
+    divContainer.unHighlight();
+    promptToView.textContent = ""
+  }
+
+ 
   
 }
 
