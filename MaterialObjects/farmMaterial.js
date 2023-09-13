@@ -13,30 +13,43 @@ export class FarmMaterial {
     }){
         let tmp_object = undefined;
         var mtlLoader = new MTLLoader();
+        let adj = this.getPosAdj(obj)
         mtlLoader.load(mtl, function(materials) {
             materials.preload();
             const objLoader = new OBJLoader().setMaterials(materials)
             
-            objLoader.load(obj, obj => {
-            var texture = new THREE.TextureLoader().load(png);
-   
-            obj.scale.set(0.05,0.05,0.05)
-         
-            obj.position.set(position.x + 1.85, 0, position.z + -0.84);
+            objLoader.load(obj, _obj => {
+                var texture = new THREE.TextureLoader().load(png);
+    
+                _obj.scale.set(0.05,0.05,0.05)
             
-            
-            obj.traverse(function (child) {
-                if (child instanceof THREE.Mesh) {
-                child.material.map = texture;
-                }
-            });
-            
-            //obj.position.position.x = position.x
-            scene.add(obj)
+               
+                _obj.position.set(position.x + adj.x, 0, position.z + adj.z);
+                _obj.traverse(function (child) {
+                    if (child instanceof THREE.Mesh) {
+                    child.material.map = texture;
+                    }
+                });
+                
+                //obj.position.position.x = position.x
+                scene.add(_obj)
             });
         })
+
+
         
-     }
+    }
+
+    getPosAdj(obj) {
+        switch (obj) {
+            case "./Landscape/Obj/Crops/White_Flower_Grass.obj":
+                return {x: 1.85, z: -0.84}
+                break;
+            default:
+                return {x: 0, z: 0}
+        }
+       
+    }
 
    
    
