@@ -217,6 +217,7 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
   // scene.add(farm)
 
   group = ufoModel.getGLTF();
+  group.scale.set(0.05,0.05,0.05)
   scene.add(group);
 })
 
@@ -250,8 +251,8 @@ groundPhys.setQuaternionFromEuler(-Math.PI / 2, 0, 0)
 
 // Add sphere physics body
 const spherePhys = new SpherePhysics({
-  vecShape: 20, 
-  vecPos: {x: 0, y: 50, z: 0}
+  vecShape: 3, 
+  vecPos: {x: 0, y: 10, z: 0}
 });
 world.addBody(spherePhys.getBody());
 spherePhys.setLinearDamping(0.31);
@@ -277,7 +278,7 @@ function animate(time) {
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
   //ufoModel.getGLTF().position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
-  camera.position.set(group.position.x + 0, group.position.y + 150, group.position.z + -250);
+  camera.position.set(group.position.x + 0, group.position.y + 167, group.position.z + -250);
   //camera.position.set(0, 150, -250);
   labelRenderer.render(scene, camera);
 
@@ -344,22 +345,22 @@ function moveSaucer(event){
 }
 
 function moveRight(body) {
-  const impulseForce = new CANNON.Vec3(-20, 0, 0); // Change the force values as needed
+  const impulseForce = new CANNON.Vec3(-2, 0, 0); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
 function moveLeft(body) {
-  const impulseForce = new CANNON.Vec3(20, 0, 0); // Change the force values as needed
+  const impulseForce = new CANNON.Vec3(2, 0, 0); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
 function moveForward(body) {
-  const impulseForce = new CANNON.Vec3(0, 0, 20); // Change the force values as needed
+  const impulseForce = new CANNON.Vec3(0, 0, 2); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
 function moveBackward(body) {
-  const impulseForce = new CANNON.Vec3(0, 0, -20); // Change the force values as needed
+  const impulseForce = new CANNON.Vec3(0, 0, -2); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
