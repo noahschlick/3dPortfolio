@@ -87,6 +87,9 @@ let farm = new THREE.Group();
 
 // scene.add(divContainer.getElement());
 
+var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6 );
+hemiLight.position.set( 0, 500, 0 );
+
 var keyLight = new THREE.AmbientLight(0xfffff, 1.0);
 keyLight.position.set(-100, 0, 100);
 
@@ -96,9 +99,8 @@ fillLight.position.set(100, 0, 100);
 var backLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%'), 0.25);
 backLight.position.set(100, 0, -100).normalize();
 
-scene.add(keyLight);
-scene.add(fillLight)
-scene.add(backLight)
+
+scene.add(hemiLight)
 
 var mtlLoader = new MTLLoader();
 
@@ -113,23 +115,23 @@ highlightMesh.rotateX(-Math.PI / 2);
 highlightMesh.position.set(1.5, 0, 1.5);
 scene.add(highlightMesh);
 
-const fm = new FarmMaterial({
-  obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-  mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-  png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-  scene: scene,
-  position: {x: 0.5, y: 0, z: 0.5},
-  rotation: 0,
-})
+// const fm = new FarmMaterial({
+//   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+//   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+//   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+//   scene: scene,
+//   position: {x: 0.5, y: 0, z: 0.5},
+//   rotation: 0,
+// })
 
-const fmm = new FarmMaterial({
-  obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-  mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-  png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-  scene: scene,
-  position: {x: 1.5, y: 0, z: 1.5},
-  rotation: 0,
-})
+// const fmm = new FarmMaterial({
+//   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+//   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+//   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+//   scene: scene,
+//   position: {x: 1.5, y: 0, z: 1.5},
+//   rotation: 0,
+// })
 
 const grid = new THREE.GridHelper(20, 20);
 
@@ -273,7 +275,7 @@ function animate(time) {
   world.step(timeStep)
   if (group)
     group.rotation.y = time / 3000;
-  renderer.render(scene, camera);
+  renderer.compile(scene, camera);
 
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
