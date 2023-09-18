@@ -275,7 +275,7 @@ function animate(time) {
   world.step(timeStep)
   if (group)
     group.rotation.y = time / 3000;
-  renderer.render(scene, camera);
+  renderer.compile(scene, camera);
 
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
