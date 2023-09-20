@@ -92,9 +92,9 @@ export class FarmLand {
                 position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
             },
             {
-                obj: "./Landscape/Obj/Ground/Grass.obj",
-                mtl: "./Landscape/Obj/Ground/Grass.mtl",
-                png: "./Landscape/Obj/Ground/Grass.png",
+                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
+                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
+                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
             },
@@ -640,6 +640,126 @@ export class FarmLand {
 
         ]
     
+    }
+
+
+    getGrassLand = ({startPoint: startPoint}) => {
+        return [
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            
+           
+        ]
     }
 
 
