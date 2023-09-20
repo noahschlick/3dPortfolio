@@ -3,7 +3,7 @@ import { FarmMaterial } from "./farmMaterial";
 
 export class FarmLand {
     constructor({scene: scene}) {
-        let landMap = this.getLandMap({startPoint: {x: 0, z: 0}})
+        let landMap = this.getLettuce1Land({startPoint: {x: 0, z: 0}})
         let landMap2 = this.getLandMap({startPoint: {x: 0, z: 8}})
         let landMap3 = this.getLandMap({startPoint: {x: 0, z: -8}})
 
@@ -762,9 +762,357 @@ export class FarmLand {
         ]
     }
 
+    getWheatLand = ({startPoint: startPoint}) => {
+        return [
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Wheat_Level_3.obj",
+                mtl: "./Landscape/Obj/Crops/Wheat_Level_3.mtl",
+                png: "./Landscape/Obj/Crops/Wheat_Level_3.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 0.5}
+            },
+        ]
+    }
 
+    getCarrotLand = ({startPoint: startPoint}) => {
+        return [
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Carrots_Level_2.obj",
+                mtl: "./Landscape/Obj/Crops/Carrots_Level_2.mtl",
+                png: "./Landscape/Obj/Crops/Carrots_Level_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 0.5}
+            },
+        ]
+    }
     
 
+    getLettuce1Land = ({startPoint: startPoint}) => {
+        return [
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Crops/Lettuce_Level_1.obj",
+                mtl: "./Landscape/Obj/Crops/Lettuce_Level_1.mtl",
+                png: "./Landscape/Obj/Crops/Lettuce_Level_1.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 0.5}
+            },
+        ]
+    }
    
     
 }
