@@ -3,7 +3,7 @@ import { FarmMaterial } from "./farmMaterial";
 
 export class FarmLand {
     constructor({scene: scene}) {
-        let landMap = this.getWater({startPoint: {x: 0, z: 0}})
+        let landMap = this.getFence({startPoint: {x: 0, z: 0}})
         let landMap2 = this.getLandMap({startPoint: {x: 0, z: 8}})
         let landMap3 = this.getLandMap({startPoint: {x: 0, z: -8}})
 
@@ -25,6 +25,7 @@ export class FarmLand {
                 mtl: landMap2[i].mtl,
                 png: landMap2[i].png,
                 scene: scene,
+                rotation: 0.5,
                 position: landMap2[i].position
             }))
         }
@@ -60,6 +61,18 @@ export class FarmLand {
        
     }
 
+    getFence = ({startPoint: startPoint}) => {
+        return[
+            {
+                obj: "./Landscape/Obj/Fence/Fence.obj",
+                mtl: "./Landscape/Obj/Fence/Fence.mtl",
+                png: "./Landscape/Obj/Fence/Fence.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            }
+        ]
+    }
+
     getLandMap = ({startPoint: startPoint}) => {
         
         return [
@@ -92,9 +105,9 @@ export class FarmLand {
                 position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
             },
@@ -295,9 +308,9 @@ export class FarmLand {
                 position: {x: startPoint.x + 3.5, y: 0, z: startPoint.z + 2.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/Red_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/Red_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/Red_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + 3.5, y: 0, z: startPoint.z + 1.5}
             },
@@ -393,16 +406,16 @@ export class FarmLand {
                 position: {x: startPoint.x + -3.5, y: 0, z: startPoint.z + 3.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -3.5, y: 0, z: startPoint.z + 3.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -3.5, y: 0, z: startPoint.z + 4.5}
             },
@@ -484,23 +497,23 @@ export class FarmLand {
                 position: {x: startPoint.x + 4.5, y: 0, z: startPoint.z + 3.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/Red_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/Red_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/Red_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + 4.5, y: 0, z: startPoint.z + 2.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/Red_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/Red_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/Red_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + 4.5, y: 0, z: startPoint.z + 1.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/Red_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/Red_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/Red_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + 4.5, y: 0, z: startPoint.z + 0.5}
             },
@@ -617,16 +630,16 @@ export class FarmLand {
                 position: {x: startPoint.x + -4.5, y: 0, z: startPoint.z + 2.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -4.5, y: 0, z: startPoint.z + 3.5}
             },
             {
-                obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-                mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-                png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
                 rotation: 0,
                 position: {x: startPoint.x + -4.5, y: 0, z: startPoint.z + 4.5}
             },
