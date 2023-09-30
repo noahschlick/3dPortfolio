@@ -24,12 +24,17 @@ export class FarmMaterial {
                 _obj.scale.set(0.05,0.05,0.05)
             
                
-                _obj.position.set(position.x + adj.x, 0, position.z + adj.z);
+                _obj.position.set(position.x + adj.x, position.y, position.z + adj.z);
                 _obj.traverse(function (child) {
                     if (child instanceof THREE.Mesh) {
                     child.material.map = texture;
                     }
                 });
+
+                if (rotation) {
+                    _obj.rotation.y = Math.PI / 2;
+                }
+                
                 
                 //obj.position.position.x = position.x
                 scene.add(_obj)
@@ -63,6 +68,10 @@ export class FarmMaterial {
                 return {x: -0.35, z: -0.85}
             case "./Landscape/Obj/Crops/Wheat_Level_3.obj":
                 return {x: 0.75, z: 2.45}
+            case "./Landscape/Obj/Fence/Fence.obj":
+                return {x: -0.1, z: 1.5}
+            case "./Landscape/Obj/Fence/Fence_Door.obj":
+                return {x: 0, z: 1.5}
             default:
                 return {x: 0, z: 0}
         }
