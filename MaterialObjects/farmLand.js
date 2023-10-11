@@ -145,6 +145,7 @@ export class FarmLand {
             i += 4
         }
 
+
         this.getGrassLand({startPoint: {x: -4, z:  0}}).map((item) => {
             materials.push(new FarmMaterial({
                 obj: item.obj,
@@ -265,6 +266,127 @@ export class FarmLand {
                 position: item.position
             }))
         })
+        this.getGrassLand({startPoint: {x: -8, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -8, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -8, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
        
     }
 
