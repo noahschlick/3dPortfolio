@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader';
+
+
 import * as CANNON from 'cannon-es';
 import { Box } from './MaterialObjects/box';
 import { Sphere } from './MaterialObjects/sphere';
@@ -16,15 +19,21 @@ import { FarmMaterial } from './MaterialObjects/farmMaterial';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
 import { FarmLand } from './MaterialObjects/farmLand';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
-  2,
+  55,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
+const axesHelper = new THREE.AxesHelper( 5 );
+scene.add( axesHelper );
+const helper = new THREE.CameraHelper( camera );
+scene.add( helper );
 
 // Set Renderer for 3D models
 const renderer = new THREE.WebGLRenderer({antialias: true});
@@ -78,14 +87,76 @@ const farmLoader = new GLTFLoader(loadingManager)
 let group = new THREE.Group(); // Group for the UFO
 let farm = new THREE.Group();
 
-// const divContainer = new Portal({
-//   text: "hello world", 
-//   x: 0,
-//   y: 0,
-//   z: 0
-// })
+const divContainer = new Portal({
+  text: "<-- Contacts", 
+  x: 6,
+  y: 0,
+  z: 20
+})
+const divContainer_1 = new Portal({
+  text: "Portfolio -->", 
+  x: -6,
+  y: 0,
+  z: 20
+})
 
-// scene.add(divContainer.getElement());
+const loader = new FontLoader();
+loader.load(
+  'node_modules/three/examples/fonts/droid/droid_sans_mono_regular.typeface.json',
+  (droidFont) => {
+    const textGeometry = new TextGeometry('Noah\nSchlickeisen\nWeb-Dev', {
+      height: 2,
+      size: 2,
+      font: droidFont,
+    });
+    const textMaterial = new THREE.MeshNormalMaterial();
+    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+    textMesh.position.z = 50;
+    textMesh.position.x = 10;
+    textMesh.position.y = 15;
+    textMesh.rotation.y = Math.PI ;
+    
+    
+    scene.add(textMesh)
+  }
+)
+
+// loader.load( './Fonts/BebasNeue-Regular.json', function(font) {
+
+// 	const geometry = new TextGeometry( 'Hello three.js!', {
+// 		font: font,
+// 		size: 6,
+// 		height: 5,
+// 		curveSegments: 12,
+// 		bevelEnabled: true,
+// 		bevelThickness: 10,
+// 		bevelSize: 8,
+// 		bevelOffset: 0,
+// 		bevelSegments: 5
+// 	} );
+
+//   const textMesh = new THREE.Mesh(geometry, [
+//     new THREE.MeshPhongMaterial({ color: 0xad4000}),
+//     new THREE.MeshPhongMaterial({ color: 0xad4000})
+//   ])
+//   textMesh.position.y = 10
+//   textMesh.position.z = -20
+//   textMesh.castShadow = true
+//   scene.add(textMesh)
+// } );
+
+scene.add(divContainer.getElement());
+scene.add(divContainer_1.getElement());
+
+const geometry = new THREE.BoxGeometry( 3, 5, 3 ); 
+const material = new THREE.MeshBasicMaterial( {
+  color: 0x080FF80, 
+  transparent: true, // Enable transparency
+  opacity: 0.5,
+}); 
+const cube = new THREE.Mesh( geometry, material ); 
+cube.position.y = 2
+scene.add( cube );
 
 var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6 );
 hemiLight.position.set( 0, 500, 0 );
@@ -224,8 +295,9 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
 })
 
 // Camera positioning
-camera.position.set(group.position.x + 0, group.position.y + 20, group.position.z + -30);
+camera.position.set(group.position.x + 0, group.position.y , group.position.z + -20);
 orbit.update();
+
 
 
 // Add Ground Material
@@ -280,10 +352,9 @@ function animate(time) {
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
   //ufoModel.getGLTF().position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
-  camera.position.set(group.position.x + 0, group.position.y + 167, group.position.z + -250);
+  camera.position.set(group.position.x + 0, group.position.y + 1  , group.position.z -10);
   //camera.position.set(0, 150, -250);
   labelRenderer.render(scene, camera);
-
   renderer.render(scene, camera);
 }
 renderer.setAnimationLoop(animate);
@@ -301,9 +372,10 @@ document.addEventListener('keydown', function(event) {
 })
 
 function detectLocation(event) {
+  console.log("Div Container x: ", group.position.x)
   if (divContainer.inContainer({
     x: group.position.x, 
-    z: group.position.z
+    z: group.position.z 
   })){
     divContainer.hightlight();
     promptToView.textContent = "Click enter to go to link"
@@ -316,9 +388,6 @@ function detectLocation(event) {
     divContainer.unHighlight();
     promptToView.textContent = ""
   }
-
- 
-  
 }
 
 function moveSaucer(event){

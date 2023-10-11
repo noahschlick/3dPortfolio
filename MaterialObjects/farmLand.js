@@ -17,6 +17,81 @@ export class FarmLand {
             }))
         })
 
+        this.getRoadHorz({startPoint: {x: 4, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getRoadHorz({startPoint: {x: 8, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getRoadHorz({startPoint: {x: -4, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getRoadHorz({startPoint: {x: -8, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getRoadHorz({startPoint: {x: -12, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getRoadHorz({startPoint: {x: 12, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getRoadHorz({startPoint: {x: -16, z: 23}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotaion: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
         this.getRoad({startPoint: {x: 0, z: 8}}).map((item) => {
             materials.push(new FarmMaterial({
                 obj: item.obj,
@@ -69,6 +144,7 @@ export class FarmLand {
             }
             i += 4
         }
+
 
         this.getGrassLand({startPoint: {x: -4, z:  0}}).map((item) => {
             materials.push(new FarmMaterial({
@@ -190,6 +266,127 @@ export class FarmLand {
                 position: item.position
             }))
         })
+        this.getGrassLand({startPoint: {x: -8, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -8, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -8, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -4, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 4, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 8, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
        
     }
 
@@ -358,6 +555,186 @@ export class FarmLand {
         }
 
         return arr
+    }
+
+    getRoadHorz = ({startPoint: startPoint}) => {
+        return [
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 2.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 2.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + 2.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -2.5, y: 0, z: startPoint.z + 1.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+                mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+                png: "./Landscape/Obj/Ground/Dirt_2.png",
+                rotation: 0,
+                position: {x: startPoint.x + -2.5, y: 0, z: startPoint.z + 0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -2.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -2.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + -0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 0.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 1.5, y: 0, z: startPoint.z + -0.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 2.5, y: 0, z: startPoint.z + 2.5}
+            },
+            {
+                obj: "./Landscape/Obj/Ground/Grass.obj",
+                mtl: "./Landscape/Obj/Ground/Grass.mtl",
+                png: "./Landscape/Obj/Ground/Grass.png",
+                rotation: 0,
+                position: {x: startPoint.x + 2.5, y: 0, z: startPoint.z + -0.5}
+            },
+        ]
     }
 
     getRoad4Way = ({startPoint: startPoint}) => {

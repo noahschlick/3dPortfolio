@@ -13,6 +13,18 @@ export class Portal {
         div.append(p);
 
         this.divContainer = new CSS3DObject(div);
+        this.scale = {
+            x: 0.06,
+            y: 0.06,
+            z: 0.06
+        }
+        this.divContainer.scale.x = this.scale.x;
+        this.divContainer.scale.y = this.scale.y;
+        this.divContainer.scale.z = this.scale.z;
+
+        this.divContainer.scale.y = 0.05
+        this.divContainer.scale.z = 0.05
+
         this.divContainer.element.classList.add('portal');
         this.divContainer.rotateY(15.7);
         this.divContainer.rotateZ(0);
@@ -38,29 +50,29 @@ export class Portal {
 
     getTLpoint() {
         return {
-            x: this.position.x - this.divContainer.element.offsetWidth/2,
-            z: this.position.y + this.divContainer.element.offsetHeight, 
+            x: ((this.position.x - this.divContainer.element.offsetWidth/2) * this.scale.x) - 6,
+            z: ((this.position.z + this.divContainer.element.offsetHeight) * this.scale.z) - 6, 
         }
     }
 
     getTRpoint() {
         return {
-            x: this.position.x + this.divContainer.element.offsetWidth/2,
-            z: this.position.y + this.divContainer.element.offsetHeight, 
+            x: ((this.position.x + this.divContainer.element.offsetWidth/2) * this.scale.x) - 6,
+            z: ((this.position.z + this.divContainer.element.offsetHeight) * this.scale.z) - 6, 
         }
     }
 
     getBLpoint() {
         return {
-            x: this.position.x - this.divContainer.element.offsetWidth/2,
-            z: this.position.y - this.divContainer.element.offsetHeight, 
+            x: ((this.position.x - this.divContainer.element.offsetWidth/2) * this.scale.x) - 3,
+            z: ((this.position.z - this.divContainer.element.offsetHeight) * this.scale.z) - 3, 
         }
     }
 
     getBRpoint() {
         return {
-            x: this.position.x + this.divContainer.element.offsetWidth/2,
-            z: this.position.y - this.divContainer.element.offsetHeigh, 
+            x: ((this.position.x + this.divContainer.element.offsetWidth/2) * this.scale.x) + 3,
+            z: ((this.position.z - this.divContainer.element.offsetHeigh) * this.scale.z) - 3, 
         }
     }
 
@@ -69,6 +81,12 @@ export class Portal {
         const BLpoint = this.getBLpoint()
         const TRpoint = this.getTRpoint()
         const TLpoint = this.getTLpoint()
+
+        console.log("X: ", x, "---Z: ", z)
+        console.log("Back Right: ", BRpoint)
+        console.log("Back Left Point: ", BLpoint)
+        console.log("Top Right point: ", TRpoint)
+        console.log("Top Left point: ", TLpoint)
 
         return x < BRpoint.x && x > BLpoint.x && z > BLpoint.z && z < TLpoint.z;
     }
