@@ -386,6 +386,223 @@ export class FarmLand {
                 position: item.position
             }))
         })
+        this.getGrassLand({startPoint: {x: 12, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 16, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getGrassLand({startPoint: {x: -16, z: 20}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 16, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -16, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 12, z: 16}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 12, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 12}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 12, z: 8}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 8}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getGrassLand({startPoint: {x: 12, z: 4}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getGrassLand({startPoint: {x: -12, z: 4}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getGrassLand({startPoint: {x: 8, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -8, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: -12, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 12, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+        this.getGrassLand({startPoint: {x: 16, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+
+        this.getGrassLand({startPoint: {x: -16, z: 28}}).map((item) => {
+            materials.push(new FarmMaterial({
+                obj: item.obj,
+                mtl: item.mtl,
+                png: item.png,
+                rotation: item.rotation,
+                scene: scene,
+                position: item.position
+            }))
+        })
+      
+        
 
        
     }
