@@ -14,6 +14,9 @@ export class FarmMaterial {
         let tmp_object = undefined;
         var mtlLoader = new MTLLoader();
         let adj = this.getPosAdj(obj)
+
+
+        
         mtlLoader.load(mtl, function(materials) {
             materials.preload();
             const objLoader = new OBJLoader().setMaterials(materials)
@@ -44,6 +47,8 @@ export class FarmMaterial {
 
         
     }
+
+    
 
     getPosAdj(obj) {
         switch (obj) {

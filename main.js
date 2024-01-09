@@ -145,6 +145,11 @@ loader.load(
 //   scene.add(textMesh)
 // } );
 
+var newDiv = document.createElement("div");
+
+newDiv.id = "myDiv"
+newDiv.className = "custom-class"; // Set a CSS class
+
 scene.add(divContainer.getElement());
 scene.add(divContainer_1.getElement());
 
@@ -156,6 +161,40 @@ const material = new THREE.MeshBasicMaterial( {
 }); 
 const cube = new THREE.Mesh( geometry, material ); 
 cube.position.y = 2
+
+
+function getRoad({startPoint: startPoint}){
+        
+  const div = 0.5
+  const x = (1 + div) 
+  const y = (48 + div) 
+  let y_index = y * -1
+  let x_index = x * -1
+  let road = []
+
+  while(y_index < y){
+      while(x_index <= x){
+          road.push({
+              obj: "./Landscape/Obj/Ground/Dirt_1.obj",
+              mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
+              png: "./Landscape/Obj/Ground/Dirt_2.png",
+              rotation: 0,
+              position: {x: startPoint.x + x_index, y: 0, z: startPoint.z + y_index}
+          })
+          x_index += 1
+          
+      }
+      x_index = x * -1
+      y_index += 1
+  }
+  return road
+
+}
+
+
+
+
+
 scene.add( cube );
 
 var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6 );
@@ -351,13 +390,25 @@ function animate(time) {
 
   ground.mergePhysics(groundPhys.getPosition(), groundPhys.getQuaternion());
   group.position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
-  //ufoModel.getGLTF().position.copy(spherePhys.getPosition(), spherePhys.getQuaternion());
-  camera.position.set(group.position.x + 0, group.position.y + 1  , group.position.z -10);
-  //camera.position.set(0, 150, -250);
+
+  // Camera angle appearing as if its looking straight
+  //camera.position.set(group.position.x + 0, group.position.y + 1  , group.position.z -10);
+
+  // Adjust the camera position and target to make it look down
+  const cameraHeight = 8; // Adjust the height as needed
+  const lookAtTarget = new THREE.Vector3(group.position.x, group.position.y, group.position.z);
+  lookAtTarget.y -= cameraHeight; // Look down from a certain height
+  camera.position.set(group.position.x + 3, group.position.y + cameraHeight, group.position.z - 8);
+  camera.lookAt(lookAtTarget);
+
+
   labelRenderer.render(scene, camera);
   renderer.render(scene, camera);
 }
 renderer.setAnimationLoop(animate);
+
+
+
 
 window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -365,6 +416,9 @@ window.addEventListener('resize', function() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
+
+
+
 
 document.addEventListener('keydown', function(event) {
   moveSaucer(event);
