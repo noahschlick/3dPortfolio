@@ -22,6 +22,7 @@ import { FarmLand } from './MaterialObjects/farmLand';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -381,15 +382,69 @@ world.addContactMaterial(groundSphereContactMat);
 
 const timeStep = 1 / 60;
 
-const geo = new THREE.BoxGeometry( 20, 1, 100);
-const mat = new THREE.MeshBasicMaterial( { color: 0Xf3b48b} );
-const cub = new THREE.Mesh( geo, mat );
-cub.color = 0x00ff00
-cub.scale.set(1, 0.25, 1)
-cub.position.set(3.5, 0, 0)
-scene.add( cub );
+// const geo = new THREE.BoxGeometry( 20, 1, 100);
+// const mat = new THREE.MeshBasicMaterial( { color: 0Xf3b48b} );
+// const cub = new THREE.Mesh( geo, mat );
+// cub.color = 0x00ff00
+// cub.scale.set(1, 0.25, 1)
+// cub.position.set(3.5, 0, 0)
+// scene.add( cub );
+
+// Convert degrees to radians
+const degreesToRadians = degrees => degrees * (Math.PI / 180);
+
+const calcXCord = (radius, thetaDegrees, phiDegrees) => {
+  // Convert degrees to radians
+  const thetaRadians = degreesToRadians(thetaDegrees)
+  const phiRadians = degreesToRadians(phiDegrees)
+
+  // Calculate X
+  return radius * Math.sin(thetaRadians) * Math.cos(phiRadians)
+}
+
+const calcZCord = (radius, thetaDegrees, phiDegrees) => {
+  // Convert degrees to radians
+  const thetaRadians = degreesToRadians(thetaDegrees)
+  const phiRadians = degreesToRadians(phiDegrees)
+
+  // Calculate X
+  return radius * Math.sin(thetaRadians) * Math.sin(phiRadians)
+}
+
+const calcYCord = (radius, thetaDegrees) => {
+  // Convert degrees to radians
+  const thetaRadians = degreesToRadians(thetaDegrees)
+
+  return radius * Math.cos(thetaRadians)
+}
 
 
+
+
+
+
+
+const starGeo = new THREE.SphereGeometry(15, 32, 16);
+const starMat = new THREE.MeshBasicMaterial( { color: 0xfffff0 } ); 
+const star = new THREE.Mesh( starGeo, starMat ); 
+star.scale.set(0.10, 0.10, 0.10)
+star.position.set(0, -100, 500)
+scene.add( star );
+
+
+const star1 = new THREE.Mesh( starGeo, starMat ); 
+star1.scale.set(0.25, 0.25, 0.25)
+star1.position.set(calcXCord(510, 90, 90), calcYCord(510, 90), calcZCord(510, 90, 90))
+scene.add( star1 );
+
+for(var i = 0; i < 2000; i++) {
+  const str = new THREE.Mesh( starGeo, starMat ); 
+  str.scale.set(0.05, 0.05, 0.05)
+  const random_theta = Math.floor(Math.random() * 181);
+  const random_phi = Math.floor(Math.random() * 181);
+  str.position.set(calcXCord(510, random_theta, random_phi), calcYCord(510, random_theta), calcZCord(510, random_theta, random_phi))
+  scene.add(str)
+}
 
 
 
@@ -407,10 +462,10 @@ function animate(time) {
   //camera.position.set(group.position.x + 0, group.position.y + 1  , group.position.z -10);
 
   // Adjust the camera position and target to make it look down
-  const cameraHeight = 6; // Adjust the height as needed
+  const cameraHeight = 3; // Adjust the height as needed
   const lookAtTarget = new THREE.Vector3(group.position.x, group.position.y, group.position.z);
   lookAtTarget.y -= 0; // Look down from a certain height
-  camera.position.set(group.position.x, group.position.y + cameraHeight, group.position.z + -4);
+  camera.position.set(group.position.x, group.position.y + cameraHeight, group.position.z + -10);
   
   camera.lookAt(lookAtTarget);
 
