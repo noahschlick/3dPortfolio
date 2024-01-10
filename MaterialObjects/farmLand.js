@@ -10,22 +10,22 @@ export class FarmLand {
         const I5_C = {x: 0, z: 52}
         const I5_D = {x: 0, z: 56}
 
-        this.getRoad({startPoint: I5_A}).map((item) => {
-            // materials.push(new FarmMaterial({
-            //     obj: item.obj,
-            //     mtl: item.mtl,
-            //     png: item.png,
-            //     rotaion: item.rotation,
-            //     scene: scene,
-            //     position: item.position
-            // }))
+        // this.getRoad({startPoint: I5_A}).map((item) => {
+        //     materials.push(new FarmMaterial({
+        //         obj: item.obj,
+        //         mtl: item.mtl,
+        //         png: item.png,
+        //         rotaion: item.rotation,
+        //         scene: scene,
+        //         position: item.position
+        //     }))
 
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
-            const material = new THREE.MeshBasicMaterial({color: 0x00ff00})
-            const cube = new THREE.Mesh(geometry, material)
-             cube.position.set(item.position)
-            scene.add(cube)
-        })
+        //     const geometry = new THREE.BoxGeometry(1, 1, 1);
+        //     const material = new THREE.MeshBasicMaterial({color: 0x00ff00})
+        //     const cube = new THREE.Mesh(geometry, material)
+        //      cube.position.set(item.position)
+        //     scene.add(cube)
+        // })
         // this.getRoad({startPoint: I5_B}).map((item) => {
         //     materials.push(new FarmMaterial({
         //         obj: item.obj,
