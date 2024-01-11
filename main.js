@@ -105,54 +105,107 @@ const loader = new FontLoader();
 loader.load(
   'node_modules/three/examples/fonts/droid/droid_sans_mono_regular.typeface.json',
   (droidFont) => {
-    const textGeometry = new TextGeometry('Noah\nSchlickeisen\nWeb-Dev', {
-      height: 2,
-      size: 2,
+    const textGeometry = new TextGeometry('Noah Schlickeisen\nSoftware Developer', {
+      height: 10,
+      size: 10,
       font: droidFont,
     });
     const textMaterial = new THREE.MeshNormalMaterial();
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    textMesh.position.z = 50;
-    textMesh.position.x = 10;
-    textMesh.position.y = 15;
-    textMesh.rotation.y = Math.PI ;
+    const textMesh2 = new THREE.Mesh(textGeometry, textMaterial);
+    const textMesh3 = new THREE.Mesh(textGeometry, textMaterial);
+    const textMesh4 = new THREE.Mesh(textGeometry, textMaterial);
     
-    
-    scene.add(textMesh)
+
+    // Center the text within its geometry
+    textGeometry.center();
+
+    // Set the initial position at the center of the orbit
+    const radius = 300;
+    const initialAngle = Math.PI; // Adjust this angle as needed
+    textMesh.position.x = Math.cos(initialAngle) * radius;
+    textMesh.position.z = Math.sin(initialAngle) * radius;
+
+    textMesh2.position.x = Math.sin(initialAngle) * radius;
+    textMesh2.position.z = Math.cos(initialAngle) * radius;
+
+    textMesh3.position.x = -Math.sin(initialAngle) * radius;
+    textMesh3.position.z = -Math.cos(initialAngle) * radius;
+
+    textMesh4.position.x = -Math.cos(initialAngle) * radius;
+    textMesh4.position.z = -Math.sin(initialAngle) * radius;
+
+    textMesh.rotation.y = Math.PI / 2;
+    textMesh2.rotation.y = Math.PI / 2;
+    textMesh3.rotation.y = Math.PI;
+    textMesh4.rotation.y = 3 * Math.PI / 2;
+     
+
+
+    // Create a variable to control the orbit animation
+    let angle = initialAngle;
+    let angle2 = initialAngle;
+
+
+    // Create animation function
+    function animateText() {
+      const x = Math.cos(angle) * radius;
+      const z = Math.sin(angle) * radius;
+
+      const x2 = Math.sin(angle2) * radius;
+      const z2 = Math.cos(angle2) * radius;
+
+      const x3 = -Math.sin(angle2) * radius;
+      const z3 = -Math.cos(angle2) * radius;
+
+      const x4 = -Math.cos(angle) * radius;
+      const z4 = -Math.sin(angle) * radius;
+
+      
+      // Update textMesh position
+      textMesh.position.x = x;
+      textMesh.position.z = z;
+
+      textMesh2.position.x = x2;
+      textMesh2.position.z = z2;
+
+      textMesh3.position.x = x3;
+      textMesh3.position.z = z3;
+
+      textMesh4.position.x = x4;
+      textMesh4.position.z = z4;
+
+      // Calculate the angle between the text and the center of the orbit
+      const angleToCenter = -Math.atan2(0 - textMesh.position.z, 0 - textMesh.position.x);
+
+      // Set the rotation based on the calculated angle
+      textMesh.rotation.y = angleToCenter + Math.PI / 2;
+      textMesh2.rotation.y = angleToCenter;
+      textMesh3.rotation.y = angleToCenter + Math.PI;
+      textMesh4.rotation.y = angleToCenter + 3 * Math.PI / 2;
+
+      // Increment angle for the next frame
+      angle -= 0.001;
+      angle2 += 0.001;
+
+      requestAnimationFrame(animateText);
+    }
+
+    animateText();
+
+    scene.add(textMesh);
+    scene.add(textMesh2);
+    scene.add(textMesh3);
+    scene.add(textMesh4);
   }
-)
+);
 
-// loader.load( './Fonts/BebasNeue-Regular.json', function(font) {
 
-// 	const geometry = new TextGeometry( 'Hello three.js!', {
-// 		font: font,
-// 		size: 6,
-// 		height: 5,
-// 		curveSegments: 12,
-// 		bevelEnabled: true,
-// 		bevelThickness: 10,
-// 		bevelSize: 8,
-// 		bevelOffset: 0,
-// 		bevelSegments: 5
-// 	} );
-
-//   const textMesh = new THREE.Mesh(geometry, [
-//     new THREE.MeshPhongMaterial({ color: 0xad4000}),
-//     new THREE.MeshPhongMaterial({ color: 0xad4000})
-//   ])
-//   textMesh.position.y = 10
-//   textMesh.position.z = -20
-//   textMesh.castShadow = true
-//   scene.add(textMesh)
-// } );
 
 var newDiv = document.createElement("div");
 
 newDiv.id = "myDiv"
 newDiv.className = "custom-class"; // Set a CSS class
-
-scene.add(divContainer.getElement());
-scene.add(divContainer_1.getElement());
 
 const geometry = new THREE.BoxGeometry( 3, 5, 3 ); 
 const material = new THREE.MeshBasicMaterial( {
@@ -163,40 +216,6 @@ const material = new THREE.MeshBasicMaterial( {
 const cube = new THREE.Mesh( geometry, material ); 
 cube.position.y = 2
 
-
-function getRoad({startPoint: startPoint}){
-        
-  const div = 0.5
-  const x = (1 + div) 
-  const y = (48 + div) 
-  let y_index = y * -1
-  let x_index = x * -1
-  let road = []
-
-  while(y_index < y){
-      while(x_index <= x){
-          road.push({
-              obj: "./Landscape/Obj/Ground/Dirt_1.obj",
-              mtl: "./Landscape/Obj/Ground/Dirt_2.mtl",
-              png: "./Landscape/Obj/Ground/Dirt_2.png",
-              rotation: 0,
-              position: {x: startPoint.x + x_index, y: 0, z: startPoint.z + y_index}
-          })
-          x_index += 1
-          
-      }
-      x_index = x * -1
-      y_index += 1
-  }
-  return road
-
-}
-
-
-
-
-
-scene.add( cube );
 
 var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6 );
 hemiLight.position.set( 0, 500, 0 );
@@ -213,57 +232,12 @@ backLight.position.set(100, 0, -100).normalize();
 
 scene.add(hemiLight)
 
-var mtlLoader = new MTLLoader();
-
-const highlightMesh = new THREE.Mesh(
-  new THREE.PlaneGeometry(1, 1),
-  new THREE.MeshBasicMaterial({
-    side: THREE.DoubleSide,
-    visible: true
-  })
-);
-highlightMesh.rotateX(-Math.PI / 2);
-highlightMesh.position.set(1.5, 0, 1.5);
-scene.add(highlightMesh);
-
-// const fm = new FarmMaterial({
-//   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-//   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-//   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-//   scene: scene,
-//   position: {x: 0.5, y: 0, z: 0.5},
-//   rotation: 0,
-// })
-
-// const fmm = new FarmMaterial({
-//   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-//   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-//   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-//   scene: scene,
-//   position: {x: 1.5, y: 0, z: 1.5},
-//   rotation: 0,
-// })
 
 const grid = new THREE.GridHelper(20, 20);
 
 scene.add(grid)
 
-// mtlLoader.load('./Landscape/Obj/Crops/White_Flower_Grass.mtl', function(materials) {
-//     materials.preload();
-//     const objLoader = new OBJLoader().setMaterials(materials)
-  
-//     objLoader.load("./Landscape/Obj/Crops/White_Flower_Grass.obj", obj => {
-//       var texture = new THREE.TextureLoader().load("./Landscape/Obj/Crops/White_Flower_Grass.png");
-//       obj.traverse(function (child) {
-//         if (child instanceof THREE.Mesh) {
-//           child.material.map = texture;
-//         }
-//       })
-//       scene.add(obj)
-//     });
-//   })
 
-//scene.add(farmLand.getObject())
 
 
 let ufoModel;
@@ -282,52 +256,6 @@ rgbeLoader.load('./Environment/MR_INT-001_NaturalStudio_NAD.hdr', function(textu
   var farmL = new FarmLand({
     scene: scene
   })
-
-
-
-  // var farmLand = new FarmMaterial({
-  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-  //   scene: scene,
-  //   position: {
-  //     x: 20,
-  //     y: 0,
-  //     z: 0
-  //   }
-  // })
-  // var farmLand = new FarmMaterial({
-  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-  //   scene: scene,
-  //   position: {
-  //     x: 0,
-  //     y: 0,
-  //     z: 20
-  //   }
-  // })
-
-  // var farmLand = new FarmMaterial({
-  //   obj: "./Landscape/Obj/Crops/White_Flower_Grass.obj",
-  //   mtl: "./Landscape/Obj/Crops/White_Flower_Grass.mtl",
-  //   png: "./Landscape/Obj/Crops/White_Flower_Grass.png",
-  //   scene: scene,
-  //   position: {
-  //     x: -20,
-  //     y: 0,
-  //     z: 0
-  //   }
-  // })
-
-
-  
-  // farmModel = new FarmGround({
-  //   gltfLoader: farmLoader
-  // });
-
-  // farm.add(farmModel.getGLTF())
-  // scene.add(farm)
 
   group = ufoModel.getGLTF();
   group.scale.set(0.05,0.05,0.05)
@@ -420,29 +348,17 @@ const calcYCord = (radius, thetaDegrees) => {
 
 
 
-
-
-
-
 const starGeo = new THREE.SphereGeometry(15, 32, 16);
 const starMat = new THREE.MeshBasicMaterial( { color: 0xfffff0 } ); 
-const star = new THREE.Mesh( starGeo, starMat ); 
-star.scale.set(0.10, 0.10, 0.10)
-star.position.set(0, -100, 500)
-scene.add( star );
 
 
-const star1 = new THREE.Mesh( starGeo, starMat ); 
-star1.scale.set(0.25, 0.25, 0.25)
-star1.position.set(calcXCord(510, 90, 90), calcYCord(510, 90), calcZCord(510, 90, 90))
-scene.add( star1 );
-
-for(var i = 0; i < 2000; i++) {
+for(var i = 0; i < 5000; i++) {
   const str = new THREE.Mesh( starGeo, starMat ); 
-  str.scale.set(0.05, 0.05, 0.05)
+  const random_size = 0.04 + Math.random() * 0.03;
+  str.scale.set(random_size, random_size, random_size)
   const random_theta = Math.floor(Math.random() * 181);
   const random_phi = Math.floor(Math.random() * 181);
-  str.position.set(calcXCord(510, random_theta, random_phi), calcYCord(510, random_theta), calcZCord(510, random_theta, random_phi))
+  str.position.set(calcXCord(710, random_theta, random_phi), calcYCord(710, random_theta), calcZCord(710, random_theta, random_phi))
   scene.add(str)
 }
 
@@ -465,7 +381,7 @@ function animate(time) {
   const cameraHeight = 3; // Adjust the height as needed
   const lookAtTarget = new THREE.Vector3(group.position.x, group.position.y, group.position.z);
   lookAtTarget.y -= 0; // Look down from a certain height
-  camera.position.set(group.position.x, group.position.y + cameraHeight, group.position.z + -10);
+  camera.position.set(group.position.x, group.position.y + cameraHeight, group.position.z - 15);
   
   camera.lookAt(lookAtTarget);
 
