@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/gh/kripken/ammo.js@HEAD/builds/ammo.wasm.js"></script>
     <title>Vite App</title>
+
+
     <style>
       @font-face {
         font-family: 'BebasNeue'; /* Choose a unique name for your font */
@@ -106,6 +108,24 @@
         align-items: center;
       }
 
+      .arrow {
+        /* White border */
+        border: 2px solid white;
+
+        /* Rounded corners */
+        border-radius: 10px;
+
+        /* Absolute positioning */
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 100px;
+        height: 100px;
+
+        /* High z-index for layering */
+        z-index: 9999;
+      }
+
 
     </style>
   </head>
@@ -121,6 +141,10 @@
 
     <div class="container">
       <script type="module" src="/main.js"> </script> 
+    </div>
+
+    <div class="arrow">
+        >
     </div>
 
   </body>
