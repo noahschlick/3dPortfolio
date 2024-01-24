@@ -362,7 +362,43 @@ for(var i = 0; i < 5000; i++) {
   scene.add(str)
 }
 
+const moveUpTrigger = document.getElementById("moveUp");
+const moveDownTrigger = document.getElementById("moveDown");
+const moveRightTrigger = document.getElementById("moveRight");
+const moveLeftTrigger = document.getElementById("moveLeft");
 
+moveUpTrigger.addEventListener("click", () => {
+  const interval = setInterval(moveForward(spherePhys.getBody(), 17), 100)
+  
+  moveUpTrigger.addEventListener("mouseup", () => {
+    clearInterval(interval)
+  });
+});
+
+
+moveDownTrigger.addEventListener("mousedown", () => {
+  const interval = setInterval(moveBackward(spherePhys.getBody(), 17), 100)
+  
+  moveDownTrigger.addEventListener("mouseup", () => {
+    clearInterval(interval)
+  });
+});
+
+moveRightTrigger.addEventListener("mousedown", () => {
+  const interval = setInterval(moveRight(spherePhys.getBody(), 17), 100)
+  
+  moveRightTrigger.addEventListener("mouseup", () => {
+    clearInterval(interval)
+  });
+});
+
+moveLeftTrigger.addEventListener("click", () => {
+  const interval = setInterval(moveLeft(spherePhys.getBody(), 17), 100)
+  
+  moveLeftTrigger.addEventListener("mouseup", () => {
+    clearInterval(interval)
+  });
+});
 
 // Start the animation loop
 function animate(time) {
@@ -391,9 +427,6 @@ function animate(time) {
 }
 renderer.setAnimationLoop(animate);
 
-
-
-
 window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
@@ -401,13 +434,12 @@ window.addEventListener('resize', function() {
   labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
 
-
-
-
 document.addEventListener('keydown', function(event) {
   moveSaucer(event);
   detectLocation(event);
 })
+
+
 
 function detectLocation(event) {
   console.log("Div Container x: ", group.position.x)
@@ -436,40 +468,40 @@ function moveSaucer(event){
   switch(event.keyCode){
     case 39:
       console.log("Moving Right")
-      moveRight(spherePhys.getBody())
+      moveRight(spherePhys.getBody(), 2)
       break;
     case 37:
       console.log("Moving Left")
-      moveLeft(spherePhys.getBody())
+      moveLeft(spherePhys.getBody(), 2)
       break;
     case 38:
       console.log("Moving Forward")
-      moveForward(spherePhys.getBody())
+      moveForward(spherePhys.getBody(), 2)
       break;
     case 40:
       console.log("Moving Backward")
-      moveBackward(spherePhys.getBody())
+      moveBackward(spherePhys.getBody(), 2)
       break;
   }
 }
 
-function moveRight(body) {
-  const impulseForce = new CANNON.Vec3(-2, 0, 0); // Change the force values as needed
+function moveRight(body, force) {
+  const impulseForce = new CANNON.Vec3(force * -1, 0, 0); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
-function moveLeft(body) {
-  const impulseForce = new CANNON.Vec3(2, 0, 0); // Change the force values as needed
+function moveLeft(body, force) {
+  const impulseForce = new CANNON.Vec3(force, 0, 0); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
-function moveForward(body) {
-  const impulseForce = new CANNON.Vec3(0, 0, 2); // Change the force values as needed
+function moveForward(body, force) {
+  const impulseForce = new CANNON.Vec3(0, 0, force); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
-function moveBackward(body) {
-  const impulseForce = new CANNON.Vec3(0, 0, -2); // Change the force values as needed
+function moveBackward(body, force) {
+  const impulseForce = new CANNON.Vec3(0, 0, force * -1); // Change the force values as needed
   body.applyImpulse(impulseForce, body.position)
 }
 
