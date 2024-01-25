@@ -346,11 +346,8 @@ const calcYCord = (radius, thetaDegrees) => {
   return radius * Math.cos(thetaRadians)
 }
 
-
-
 const starGeo = new THREE.SphereGeometry(15, 32, 16);
 const starMat = new THREE.MeshBasicMaterial( { color: 0xfffff0 } ); 
-
 
 for(var i = 0; i < 5000; i++) {
   const str = new THREE.Mesh( starGeo, starMat ); 
@@ -368,16 +365,15 @@ const moveRightTrigger = document.getElementById("moveRight");
 const moveLeftTrigger = document.getElementById("moveLeft");
 
 moveUpTrigger.addEventListener("click", () => {
-  const interval = setInterval(moveForward(spherePhys.getBody(), 17), 100)
+  const interval = setInterval(moveForward(spherePhys.getBody(), 20), 100)
   
   moveUpTrigger.addEventListener("mouseup", () => {
     clearInterval(interval)
   });
 });
 
-
 moveDownTrigger.addEventListener("mousedown", () => {
-  const interval = setInterval(moveBackward(spherePhys.getBody(), 17), 100)
+  const interval = setInterval(moveBackward(spherePhys.getBody(), 20), 100)
   
   moveDownTrigger.addEventListener("mouseup", () => {
     clearInterval(interval)
@@ -385,15 +381,15 @@ moveDownTrigger.addEventListener("mousedown", () => {
 });
 
 moveRightTrigger.addEventListener("mousedown", () => {
-  const interval = setInterval(moveRight(spherePhys.getBody(), 17), 100)
+  const interval = setInterval(moveRight(spherePhys.getBody(), 20), 100)
   
   moveRightTrigger.addEventListener("mouseup", () => {
     clearInterval(interval)
   });
 });
 
-moveLeftTrigger.addEventListener("click", () => {
-  const interval = setInterval(moveLeft(spherePhys.getBody(), 17), 100)
+moveLeftTrigger.addEventListener("mousedown", () => {
+  const interval = setInterval(moveLeft(spherePhys.getBody(), 20), 100)
   
   moveLeftTrigger.addEventListener("mouseup", () => {
     clearInterval(interval)
@@ -438,8 +434,6 @@ document.addEventListener('keydown', function(event) {
   moveSaucer(event);
   detectLocation(event);
 })
-
-
 
 function detectLocation(event) {
   console.log("Div Container x: ", group.position.x)

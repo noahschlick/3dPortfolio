@@ -110,20 +110,29 @@
       }
 
       .controls-container {
-        position: absolute;
+        position: fixed;
         bottom: 20px;
         left: 20px;
         right: 20px;
         display: flex; 
         flex-direction: row; 
-        justify-content: end; 
-        align-items: end;
+        justify-content: flex-end; /* Default: Right-aligned */
+
+        /* Set justify-content to center when screen width is 520px or smaller */
+        @media (max-width: 520px) {
+          justify-content: center;
+        }
+
+        align-items: flex-end;
         z-index: 9999;
       }
 
       .arrow {
         border: 2px solid white;
         padding: 20px;
+        @media (max-width: 520px) {
+          padding: 10px;
+        }
         border-radius: 10px;
         margin: 2px;
         transition: background-color 0.05s ease;
@@ -151,7 +160,7 @@
         justify-content: center; 
         align-items: center;
       }
-
+      
 
     </style>
   </head>
@@ -188,12 +197,13 @@
           </div>
           
         </div>
+        
       </div>
       
       
     </div>
     
-
+    
   </body>
   
 </html>
