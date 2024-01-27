@@ -200,7 +200,20 @@ loader.load(
   }
 );
 
+/** CREATE GEOMETRIES **/
+// Cone
+const coneGeo = new THREE.ConeGeometry( 5, 20, 3 );
+const coneMat = new THREE.MeshBasicMaterial( {color: 0x4d4959} );
+const cone = new THREE.Mesh(coneGeo, coneMat);
+cone.rotation.x = Math.PI 
+cone.rotation.y = Math.PI
+cone.position.y = -10
+scene.add(cone)
 
+// const cyliGeo = new THREE.CylinderGeometry( 5, 5, 20, 32 ); 
+// const cyliMat = THREE.MeshBasicMaterial( {color: 0xffff00} ); 
+// const cyli = new THREE.Mesh( cyliGeo, cyliMat ); scene.add( cylinder );
+// scene.add(cyli)
 
 var newDiv = document.createElement("div");
 
